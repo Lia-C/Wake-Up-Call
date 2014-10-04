@@ -1,14 +1,15 @@
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Wake-Up-Call</title>
-</head>
-
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 <body>
-  <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+<form name="input" action="form_output.asp" method="get">
+Phone Number: <input type="text" name="phoneNumber"><br>
+Alarm Time: <input type="text" name="alarmTime">
+<p><input type="submit" value="Submit"></p>
+</form>
+
 </body>
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
+</html>
