@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Wake Up Call</title>
 
 <style>
-  heading {
+  h1{
     color: black;
   }
   .heading {
     font-size: 48px;
   }
 </style>
+</head>
 
-<heading class = "heading">
-	Connect to someone else who needs to wake up at the same time as you do.
-</heading>
 <body>
+<h1 class="heading">
+	Connect to someone else who needs to wake up at the same time as you do.
+</h1>
 
+{{> mainForm}}
+
+</body>
+
+<template name="mainForm">
+
+<div class="fadeAfterSubmit">
 <form name="input" method="get">
 What's your phone number? <input type="text" name="phoneNumber"><br>
 When do you want to wake up? 
@@ -51,6 +57,6 @@ When do you want to wake up?
 
 <p><input type="submit" value="Submit"></p>
 </form>
+</div>
 
-</body>
-</html>
+</template>

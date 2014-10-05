@@ -14,7 +14,7 @@ if (Meteor.isClient){
 	});
 	
   Alarms = new Meteor.Collection("alarms");
-  
+
   testAlarm = {
     phone: 1234567890,
     time: Date.now()
