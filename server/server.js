@@ -41,7 +41,7 @@ if (Meteor.isServer) {
 
     makeAppointment(Alarms.find({_id: newAlarmId}).fetch()[0])
 
-    makeRealCall(Appointments.find({}).fetch()[0])
+    makeCall(Appointments.find({}).fetch()[0])
 
 
     //console.log("Alarms:", Alarms.find({}).fetch())
@@ -62,6 +62,9 @@ if (Meteor.isServer) {
   		}
   	})
 
+  var exec = Npm.require('child_process').exec;
+	var Fiber = Npm.require('fibers');
+	var Future = Npm.require('fibers/future');
 
 	Meteor.methods({
 
@@ -69,23 +72,23 @@ if (Meteor.isServer) {
 		testCall: function(){doTwilio(["+19175823858","+16462840850"])},
 		getScript: function(phone){
 			return Phones.find({phone: phone}).fetch()[0]['script']
-		}
-	})
+		},
 
     callPython: function() {
         var fut = new Future();
-        exec('pythonScriptCommand with parameters', function (error, stdout, stderr) {
+        exec('./twiliostuff/twilio-call-out.py', function (error, stdout, stderr) {
 
           // if you want to write to Mongo in this callback
           // you need to get yourself a Fiber
           new Fiber(function() {
-            ...
+            
             fut.return('Python was here');
           }).run();
 
         });
         return fut.wait();
       }
+	})
 
   });
 
@@ -122,7 +125,7 @@ if (Meteor.isServer) {
   //phoneNumbers is a tuple, with each element in the form: "+10123456789"
   function doTwilio(phoneNumbers){
     var ACCOUNT_SID = "ACd5ecb70137dd7aebf72e3b85a95f3fef"
-    var AUTH_TOKEN = "b16805e25063ef10f93ae2c5f1835977"\
+    var AUTH_TOKEN = "b16805e25063ef10f93ae2c5f1835977"
     twilio = Twilio(ACCOUNT_SID, AUTH_TOKEN);
     phoneNumbers.forEach(function(phoneNumber){
       twilio.makeCall({
@@ -157,12 +160,8 @@ if (Meteor.isServer) {
   	Alarms.remove({_id: {$in: appointment['alarm_ids'] }})
   	Appointments.remove({_id: appointment['_id']})
   }
-<<<<<<< HEAD
-  function makeCatCall(alarm){
-=======
 
-  function makeCall(alarm){
->>>>>>> abdaed841c92ff395f2ec0da6e012852120cee57
+  function makeCatCall(alarm){
   	if (!alarm['appointed']){
   		console.log("Fake Cat Call!", alarm)
 
