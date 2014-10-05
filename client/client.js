@@ -68,9 +68,9 @@ if (Meteor.isClient){
 				else{
 					lineArr = script.split("\n")
 					lineArr.forEach(function(line){
-						$("#divScript").append("<br />"+line)
+						$("#divScript").append("<br /><br/>"+line)
 					})
-					$("#divScript").append('<br/><input type="button" id="finishBtn" value="Finished" >')
+					$("#divScript").append('<br/><br/><input type="button" id="finishBtn" value="Finished" >')
 					$("#divMain").hide(300,function(){$("#divScript").show(300);});
 				}
 			})
