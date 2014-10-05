@@ -53,7 +53,7 @@ if (Meteor.isServer) {
 
 		makeAppointment: function(alarm){ makeAppointment(alarm)}
 	})
-    doTwilio(["+19175823858","+16468787777"])
+    //doTwilio(["+19175823858","+16468787777"])
   });
 
   function makeAppointment(newAlarm){
@@ -103,7 +103,7 @@ if (Meteor.isServer) {
       });
     })
   }
-  
+
   function makeCall(appointment){
 
   	console.log("Fake Call!", appointment)
@@ -111,6 +111,7 @@ if (Meteor.isServer) {
   	Alarms.remove({_id: {$in: appointment['alarm_ids'] }})
   	Appointments.remove({_id: appointment['_id']})
   }
+
   function makeCall(alarm){
   	if (!alarm['appointed']){
   		console.log("Fake Cat Call!", alarm)
