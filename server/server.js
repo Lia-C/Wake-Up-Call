@@ -99,6 +99,21 @@ if (Meteor.isServer) {
 
         });
         return fut.wait();
+      },
+
+      catCallPython: function(phone) {
+        var fut = new Future();
+        exec('python ~/Desktop/Wake-Up-Call/twiliostuff/twilio-cat.py '+phone, function (error, stdout, stderr) {
+          // if you want to write to Mongo in this callback
+          // you need to get yourself a Fiber
+          new Fiber(function() {
+            
+            fut.return('PythonCat was here');
+          }).run();
+
+        });
+        return fut.wait();
+
       }
 	})
   });
@@ -156,6 +171,7 @@ if (Meteor.isServer) {
   }
 
   function makeCatCall(alarm){
+    alarm = Alarms.find({_id: alarm['_id']}).fetch()[0];
   	if (!alarm['appointed']){
   		console.log("Fake Cat Call!", alarm)
 
