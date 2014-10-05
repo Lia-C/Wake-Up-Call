@@ -5,8 +5,20 @@ if (Meteor.isServer) {
     //init
     Alarms = new Meteor.Collection("alarms");
     Appointments = new Meteor.Collection("appointments")
+    Phones = new Meteor.Collection("phones")
+    Scripts = new Meteor.Collection("scripts")
+
     Alarms.remove({});
     Appointments.remove({});
+    Phones.remove({});
+    Scripts.remove({});
+
+    var testScript = {
+    	linesA: "Hello!\nI'm good.\nGood Bye Forever!",
+    	linesB: "Sup, how are you.\nUnfortunately.\nKthx."
+    }
+
+    Scripts.insert(testScript);
 
     var alarmArray = [
     	{
@@ -28,6 +40,8 @@ if (Meteor.isServer) {
     newAlarmId = Alarms.insert(newAlarm);
 
     makeAppointment(Alarms.find({_id: newAlarmId}).fetch()[0])
+
+    makeRealCall(Appointments.find({}).fetch()[0])
 
 
     //console.log("Alarms:", Alarms.find({}).fetch())
@@ -51,9 +65,13 @@ if (Meteor.isServer) {
 
 	Meteor.methods({
 
-		makeAppointment: function(alarm){ makeAppointment(alarm)}
+		makeAppointment: function(alarm){ makeAppointment(alarm)},
+		testCall: function(){doTwilio(["+19175823858","+16462840850"])},
+		getScript: function(phone){
+			return Phones.find({phone: phone}).fetch()[0]['script']
+		}
 	})
-    doTwilio(["+19175823858","+16468787777"])
+
   });
 
   function makeAppointment(newAlarm){
@@ -75,7 +93,7 @@ if (Meteor.isServer) {
     	timeDiff = ( appointment['time'] - Date.now() )
     	console.log(timeDiff)
 
-    	Meteor.setTimeout(function(){makeCall(appointment)}, timeDiff)
+    	Meteor.setTimeout(function(){makeRealCall(appointment)}, timeDiff)
     	console.log("Appointment made!")
   	}
   	else{
@@ -92,26 +110,39 @@ if (Meteor.isServer) {
     var AUTH_TOKEN = "b16805e25063ef10f93ae2c5f1835977"
     twilio = Twilio(ACCOUNT_SID, AUTH_TOKEN);
     phoneNumbers.forEach(function(phoneNumber){
-      console.log("panis", phoneNumber)
       twilio.makeCall({
         to:phoneNumber, // Any number Twilio can call
         from: '+16468673942', // A number you bought from Twilio and can use for outbound communication
         url: 'https://www.dropbox.com/s/1eoa97kbtqo9tut/twilio-response.xml?dl=1' // A URL that produces an XML document (TwiML) which contains instructions for the call
       }, function(err, responseData) {
         //executed when the call has been initiated.
-        console.log(responseData.from); 
+        console.log(responseData.from, responseData.body, err); 
       });
     })
+    
   }
   
-  function makeCall(appointment){
+  function makeRealCall(appointment){
 
   	console.log("Fake Call!", appointment)
 
+
+  	phoneAndScriptArr = [{
+  			phone: appointment['phones'][0],
+  			script: Scripts.find({}).fetch()[0]['linesA']
+  		},
+  		{
+  			phone: appointment['phones'][1],
+  			script: Scripts.find({}).fetch()[0]['linesB']
+  		}
+  	]
+
+  	Phones.insert(phoneAndScriptArr[0])
+  	Phones.insert(phoneAndScriptArr[1])
   	Alarms.remove({_id: {$in: appointment['alarm_ids'] }})
   	Appointments.remove({_id: appointment['_id']})
   }
-  function makeCall(alarm){
+  function makeCatCall(alarm){
   	if (!alarm['appointed']){
   		console.log("Fake Cat Call!", alarm)
 
