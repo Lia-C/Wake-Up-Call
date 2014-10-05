@@ -45,7 +45,14 @@ if (Meteor.isClient){
   		//console.log(insertedAlarm)
   		var insertedAlarm = Alarms.find({_id: insertedAlarmId}).fetch()[0]
 
-  		Meteor.call('makeAppointment', insertedAlarm)
+  		Meteor.call('makeAppointment', insertedAlarm, function(e, ret){
+  			if(e){
+  				alert("Error: "+ e)
+  			}
+  			else{
+  				alert("Alarm Created!")
+  			}
+  		})
 
 
 		},

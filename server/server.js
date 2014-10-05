@@ -64,7 +64,6 @@ if (Meteor.isServer) {
 
 
 	Meteor.methods({
-<<<<<<< HEAD
 
 		makeAppointment: function(alarm){ makeAppointment(alarm)},
 		testCall: function(){doTwilio(["+19175823858","+16462840850"])},
@@ -73,7 +72,6 @@ if (Meteor.isServer) {
 		}
 	})
 
-=======
     callPython: function() {
         var fut = new Future();
         exec('pythonScriptCommand with parameters', function (error, stdout, stderr) {
@@ -89,11 +87,6 @@ if (Meteor.isServer) {
         return fut.wait();
       }
 
-      
-		makeAppointment: function(alarm){ makeAppointment(alarm)}
-	})
-    //doTwilio(["+16462840850","+19175823858"])
->>>>>>> abdaed841c92ff395f2ec0da6e012852120cee57
   });
 
   function makeAppointment(newAlarm){
