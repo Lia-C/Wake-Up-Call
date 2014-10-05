@@ -1,0 +1,165 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'twilio' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'twilio', null ]
+6 verbose cache add name=undefined spec="twilio" args=["twilio",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'twilio',
+7 verbose parsed url   path: 'twilio',
+7 verbose parsed url   href: 'twilio' }
+8 silly lockFile e92733a3-twilio twilio
+9 verbose lock twilio /home/win/.npm/e92733a3-twilio.lock
+10 silly lockFile e92733a3-twilio twilio
+11 silly lockFile e92733a3-twilio twilio
+12 verbose addNamed [ 'twilio', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile b6fc9222-twilio twilio@
+15 verbose lock twilio@ /home/win/.npm/b6fc9222-twilio.lock
+16 silly addNameRange { name: 'twilio', range: '*', hasData: false }
+17 verbose request where is /twilio
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 4f72b1f759c83f00
+20 verbose url raw /twilio
+21 verbose url resolving [ 'https://registry.npmjs.org/', './twilio' ]
+22 verbose url resolved https://registry.npmjs.org/twilio
+23 verbose request where is https://registry.npmjs.org/twilio
+24 info trying registry request attempt 1 at 05:49:43
+25 verbose etag "1KF44WA7N0PPRXR14PD1VV6BO"
+26 http GET https://registry.npmjs.org/twilio
+27 http 304 https://registry.npmjs.org/twilio
+28 silly registry.get cb [ 304,
+28 silly registry.get   { date: 'Sun, 05 Oct 2014 09:49:43 GMT',
+28 silly registry.get     server: 'Apache',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     'last-modified': 'Sun, 05 Oct 2014 09:49:44 GMT',
+28 silly registry.get     'cache-control': 'max-age=60',
+28 silly registry.get     etag: '"1KF44WA7N0PPRXR14PD1VV6BO"',
+28 silly registry.get     'x-served-by': 'cache-iad2130-IAD',
+28 silly registry.get     'x-cache': 'HIT',
+28 silly registry.get     'x-cache-hits': '1',
+28 silly registry.get     'x-timer': 'S1412502583.848773,VS0,VE352',
+28 silly registry.get     vary: 'Accept',
+28 silly registry.get     'content-length': '0',
+28 silly registry.get     'keep-alive': 'timeout=10, max=50',
+28 silly registry.get     connection: 'Keep-Alive' } ]
+29 verbose etag https://registry.npmjs.org/twilio from cache
+30 silly addNameRange number 2 { name: 'twilio', range: '*', hasData: true }
+31 silly addNameRange versions [ 'twilio',
+31 silly addNameRange   [ '0.0.0',
+31 silly addNameRange     '0.0.1',
+31 silly addNameRange     '0.0.3',
+31 silly addNameRange     '0.0.4',
+31 silly addNameRange     '0.2.0',
+31 silly addNameRange     '0.3.0',
+31 silly addNameRange     '0.4.0',
+31 silly addNameRange     '0.3.3',
+31 silly addNameRange     '0.4.1',
+31 silly addNameRange     '0.5.0',
+31 silly addNameRange     '0.6.0',
+31 silly addNameRange     '0.6.1',
+31 silly addNameRange     '0.6.2',
+31 silly addNameRange     '0.7.0',
+31 silly addNameRange     '0.7.1',
+31 silly addNameRange     '0.8.0',
+31 silly addNameRange     '0.8.1',
+31 silly addNameRange     '1.0.0',
+31 silly addNameRange     '1.0.1',
+31 silly addNameRange     '1.1.0',
+31 silly addNameRange     '1.1.1',
+31 silly addNameRange     '1.1.2',
+31 silly addNameRange     '1.1.3',
+31 silly addNameRange     '1.1.4',
+31 silly addNameRange     '1.2.0',
+31 silly addNameRange     '1.3.0',
+31 silly addNameRange     '1.4.0',
+31 silly addNameRange     '1.5.0',
+31 silly addNameRange     '1.6.0',
+31 silly addNameRange     '1.7.0' ] ]
+32 verbose addNamed [ 'twilio', '1.7.0' ]
+33 verbose addNamed [ '1.7.0', '1.7.0' ]
+34 silly lockFile 05cebf0c-twilio-1-7-0 twilio@1.7.0
+35 verbose lock twilio@1.7.0 /home/win/.npm/05cebf0c-twilio-1-7-0.lock
+36 silly lockFile 05cebf0c-twilio-1-7-0 twilio@1.7.0
+37 silly lockFile 05cebf0c-twilio-1-7-0 twilio@1.7.0
+38 silly lockFile b6fc9222-twilio twilio@
+39 silly lockFile b6fc9222-twilio twilio@
+40 silly resolved [ { name: 'twilio',
+40 silly resolved     description: 'A Twilio helper library',
+40 silly resolved     version: '1.7.0',
+40 silly resolved     author: { name: 'Kevin Whinnery', email: 'kevin.whinnery@gmail.com' },
+40 silly resolved     contributors: [ [Object] ],
+40 silly resolved     repository:
+40 silly resolved      { type: 'git',
+40 silly resolved        url: 'https://github.com/twilio/twilio-node.git' },
+40 silly resolved     dependencies:
+40 silly resolved      { request: '2.27.x',
+40 silly resolved        underscore: '1.x',
+40 silly resolved        'jwt-simple': '0.1.x',
+40 silly resolved        q: '0.9.7',
+40 silly resolved        scmp: '0.0.3' },
+40 silly resolved     devDependencies: { express: '3.x', 'jasmine-node': '*' },
+40 silly resolved     scripts: { test: 'jasmine-node spec' },
+40 silly resolved     main: './lib',
+40 silly resolved     engines: { node: '>=0.8.0' },
+40 silly resolved     bugs: { url: 'https://github.com/twilio/twilio-node/issues' },
+40 silly resolved     homepage: 'https://github.com/twilio/twilio-node',
+40 silly resolved     _id: 'twilio@1.7.0',
+40 silly resolved     dist:
+40 silly resolved      { shasum: 'd38d515564e604320f1213059c621aea8e0e852d',
+40 silly resolved        tarball: 'http://registry.npmjs.org/twilio/-/twilio-1.7.0.tgz' },
+40 silly resolved     _from: 'twilio@',
+40 silly resolved     _npmVersion: '1.4.3',
+40 silly resolved     _npmUser: { name: 'kwhinnery', email: 'kevin.whinnery@gmail.com' },
+40 silly resolved     maintainers: [ [Object] ],
+40 silly resolved     directories: {},
+40 silly resolved     _shasum: 'd38d515564e604320f1213059c621aea8e0e852d',
+40 silly resolved     _resolved: 'https://registry.npmjs.org/twilio/-/twilio-1.7.0.tgz',
+40 silly resolved     readme: 'ERROR: No README data found!' } ]
+41 info install twilio@1.7.0 into /usr/lib
+42 info installOne twilio@1.7.0
+43 verbose lib/node_modules/twilio unbuild
+44 verbose tar unpack /home/win/.npm/twilio/1.7.0/package.tgz
+45 silly lockFile db18966c-tar-usr-lib-node-modules-twilio tar:///usr/lib/node_modules/twilio
+46 verbose lock tar:///usr/lib/node_modules/twilio /home/win/.npm/db18966c-tar-usr-lib-node-modules-twilio.lock
+47 silly lockFile 88a48e35-win-npm-twilio-1-7-0-package-tgz tar:///home/win/.npm/twilio/1.7.0/package.tgz
+48 verbose lock tar:///home/win/.npm/twilio/1.7.0/package.tgz /home/win/.npm/88a48e35-win-npm-twilio-1-7-0-package-tgz.lock
+49 silly gunzTarPerm modes [ '775', '664' ]
+50 error Error: EACCES, mkdir '/usr/lib/node_modules/twilio'
+50 error  { [Error: EACCES, mkdir '/usr/lib/node_modules/twilio']
+50 error   errno: 3,
+50 error   code: 'EACCES',
+50 error   path: '/usr/lib/node_modules/twilio',
+50 error   fstream_type: 'Directory',
+50 error   fstream_path: '/usr/lib/node_modules/twilio',
+50 error   fstream_class: 'DirWriter',
+50 error   fstream_stack:
+50 error    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+50 error      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+50 error      'Object.oncomplete (fs.js:107:15)' ] }
+51 error Please try running this command again as root/Administrator.
+52 error System Linux 3.13.0-32-generic
+53 error command "/usr/bin/node" "/usr/bin/npm" "install" "-g" "twilio"
+54 error cwd /home/win/Desktop/Wake-Up-Call
+55 error node -v v0.10.32
+56 error npm -v 1.4.28
+57 error path /usr/lib/node_modules/twilio
+58 error fstream_path /usr/lib/node_modules/twilio
+59 error fstream_type Directory
+60 error fstream_class DirWriter
+61 error code EACCES
+62 error errno 3
+63 error stack Error: EACCES, mkdir '/usr/lib/node_modules/twilio'
+64 error fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+64 error fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+64 error fstream_stack Object.oncomplete (fs.js:107:15)
+65 verbose exit [ 3, true ]

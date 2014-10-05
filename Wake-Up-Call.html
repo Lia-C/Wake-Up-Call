@@ -5,8 +5,10 @@
 </head>
 
 <body>
-<h1>
-	Connect to someone else who needs to wake up at the same time as you do.
+<h1>  
+  <img src="./logo.png" id="logo"/>
+  <br />
+	It's time for a daytime story.
 </h1>
 
 {{> mainForm}}
@@ -14,13 +16,15 @@
 {{> script}}
 
 </body>
-
 <template name="mainForm">
 
 <div id="divMain">
 <form name="input" method="get">
-What's your phone number? <input type="text" class="phoneNumber"><br>
-When do you want to wake up? 
+  <br />
+  <br />
+<p>What's your 10-digit phone number?</p> 
+<input type="text" class="phoneNumber" maxlength="10"><br><br>
+<p>When do you want to wake up?</p> 
 
 <select class="hour">
   <option value="01">01</option>
@@ -56,9 +60,13 @@ When do you want to wake up?
 </select>
 
 <br />
+<br />
+<br />
 
-<input type="button" id="submitAlarm" value="Make Alarm"><input type="button" id="seeTest" value="I Just Woke Up">
+<input type="button" class='btn' id="submitAlarm" value="Make Alarm"><input type="button" class='btn' id="seeTest" value="I Just Woke Up">
 </form>
+
+<p id="foot">(Requires Twilio Validation)</p>
 </div>
 
 </template>
