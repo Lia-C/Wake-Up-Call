@@ -11,7 +11,7 @@ if (Meteor.isServer) {
     var alarmArray = [
     	{
     		phone: "6462840850",
-    		time: new Date(2014, 10, 5, 15),
+    		time: new Date(2014, 9, 5, 12, 0),
     		appointed: false
     	}
     ]
@@ -22,7 +22,7 @@ if (Meteor.isServer) {
 
     newAlarm = {
     		phone: "4135471337",
-    		time: new Date(2014, 10, 5, 15),
+    		time: new Date(2014, 9, 5, 12, 0),
     		appointed: false
     	}
     newAlarmId = Alarms.insert(newAlarm);
@@ -63,6 +63,7 @@ if (Meteor.isServer) {
 
     	appointment = {
     		phones: [ newAlarm['phone'], oldAlarm['phone'] ],
+    		alarm_ids: [newAlarm['_id'], oldAlarm['_id'] ],
     		time: newAlarm['time']
     	}
 
@@ -71,10 +72,16 @@ if (Meteor.isServer) {
     	Alarms.update({_id: newAlarm['_id'] }, {$set: {appointed: true}})
 
     	Appointments.insert(appointment)
+    	timeDiff = ( appointment['time'] - Date.now() )
+    	console.log(timeDiff)
+
+    	Meteor.setTimeout(function(){makeCall(appointment)}, timeDiff)
     	console.log("Appointment made!")
   	}
   	else{
   		console.log("No other alarm to be paired with :'( ")
+    	timeDiff = ( newAlarm['time'] - Date.now() )
+    	Meteor.setTimeout(function(){makeCatCall(newAlarm)}, timeDiff - 1000)
   	}
   	console.log(Appointments.find({}).fetch())
   }
@@ -95,6 +102,25 @@ if (Meteor.isServer) {
         console.log(responseData.from); 
       });
     })
+  }
+  
+  function makeCall(appointment){
+
+  	console.log("Fake Call!", appointment)
+
+  	Alarms.remove({_id: {$in: appointment['alarm_ids'] }})
+  	Appointments.remove({_id: appointment['_id']})
+  }
+  function makeCall(alarm){
+  	if (!alarm['appointed']){
+  		console.log("Fake Cat Call!", alarm)
+
+  		Alarms.remove({_id: alarm['_id']})
+  	}
+  	else{
+  		console.log("Cat replaced by human!")
+  		Alarms.remove({_id: alarm['_id']})
+  	}
   }
 
 
