@@ -1,11 +1,34 @@
-
-  h1{
-    color: black;
-    text-align: center;
-    font-size: 60px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  .fadeAfterSubmit{
-  	font-size: 48px;
-  	font-family: Arial, Helvetica, sans-serif;
-  }
+html, body{
+  min-height: : 100%;
+}
+body{
+/*  background-color: black;*/
+  background-image: : url("large.jpg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: cover;
+}
+@media (min-width: 500px), (min-height: 332px){
+  body {background-size: auto;}
+}
+h1{
+  color: white;
+  text-align: center;
+  font-size: 36px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+div{
+  color: white;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+input{
+  color: black;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
