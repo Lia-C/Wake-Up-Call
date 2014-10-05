@@ -53,7 +53,7 @@ if (Meteor.isServer) {
 
 		makeAppointment: function(alarm){ makeAppointment(alarm)}
 	})
-    //doTwilio(["+19175823858","+16468787777"])
+    //doTwilio(["+16462840850","+19175823858"])
   });
 
   function makeAppointment(newAlarm){
@@ -89,14 +89,14 @@ if (Meteor.isServer) {
   //phoneNumbers is a tuple, with each element in the form: "+10123456789"
   function doTwilio(phoneNumbers){
     var ACCOUNT_SID = "ACd5ecb70137dd7aebf72e3b85a95f3fef"
-    var AUTH_TOKEN = "b16805e25063ef10f93ae2c5f1835977"
+    var AUTH_TOKEN = "b16805e25063ef10f93ae2c5f1835977"\
     twilio = Twilio(ACCOUNT_SID, AUTH_TOKEN);
     phoneNumbers.forEach(function(phoneNumber){
       console.log("panis", phoneNumber)
       twilio.makeCall({
         to:phoneNumber, // Any number Twilio can call
-        from: '+16468673942', // A number you bought from Twilio and can use for outbound communication
-        url: 'https://www.dropbox.com/s/1eoa97kbtqo9tut/twilio-response.xml?dl=1' // A URL that produces an XML document (TwiML) which contains instructions for the call
+        from: "+16468673942", // A number you bought from Twilio and can use for outbound communication
+        url: "https://www.dropbox.com/s/1eoa97kbtqo9tut/twilio-response.xml?dl=1" // A URL that produces an XML document (TwiML) which contains instructions for the call
       }, function(err, responseData) {
         //executed when the call has been initiated.
         console.log(responseData.from); 
