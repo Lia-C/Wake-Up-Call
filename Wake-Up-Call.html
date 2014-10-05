@@ -11,11 +11,13 @@
 
 {{> mainForm}}
 
+{{> script}}
+
 </body>
 
 <template name="mainForm">
 
-<div class="fadeAfterSubmit">
+<div id="divMain">
 <form name="input" method="get">
 What's your phone number? <input type="text" class="phoneNumber"><br>
 When do you want to wake up? 
@@ -55,8 +57,14 @@ When do you want to wake up?
 
 <br />
 
-<input type="button" id="submitAlarm" value="Submit">
+<input type="button" id="submitAlarm" value="Make Alarm"><input type="button" id="seeTest" value="I Just Woke Up">
 </form>
 </div>
 
+</template>
+
+<template name="script">
+<div id="divScript">
+
+</div>
 </template>

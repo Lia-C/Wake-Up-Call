@@ -1,6 +1,10 @@
 if (Meteor.isClient){
 
+	Template.script.rendered = function(){
 
+	$("#divMain").show();
+	$("#divScript").hide();
+	}
 	// Load Appointments
 	Template.mainForm.events({
 
@@ -44,6 +48,36 @@ if (Meteor.isClient){
   		Meteor.call('makeAppointment', insertedAlarm)
 
 
+		},
+
+		'click #seeTest': function(ev){
+
+			//Meteor.call('testCall')
+
+			Meteor.call('getScript', $('.phoneNumber')[0].value, function(err, script){
+				if (err){
+					alert("No appointment found for number!")
+				}
+				else{
+					lineArr = script.split("\n")
+					lineArr.forEach(function(line){
+						$("#divScript").append("<br />"+line)
+					})
+					$("#divScript").append('<br/><input type="button" id="finishBtn" value="Finished" >')
+					$("#divMain").hide(300,function(){$("#divScript").show(300);});
+				}
+			})
+
+
+		}
+
+	})
+
+	Template.script.events({
+
+		'click #finishBtn': function(ev){
+			$("#divScript").empty();
+			$("#divScript").hide(300, function(){$("#divMain").show(200);});
 		}
 	})
 
