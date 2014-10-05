@@ -2,8 +2,7 @@ html, body{
   min-height: : 100%;
 }
 body{
-/*  background-color: black;*/
-  background-image: : url("large.jpg");
+  background-color: #aaaaff;
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
@@ -11,24 +10,64 @@ body{
 @media (min-width: 500px), (min-height: 332px){
   body {background-size: auto;}
 }
+#divMain{
+  font-size: 24px;
+}
+#divScript{
+  font-size:24px;
+}
 h1{
-  color: white;
+  color: black;
   text-align: center;
   font-size: 36px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Calibri, Helvetica, sans-serif;
   font-weight: bold;
 }
 div{
-  color: white;
+  color: black;
 	font-size: 20px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Calibri, Helvetica, sans-serif;
   font-weight: bold;
   text-align: center;
 }
 input{
   color: black;
   font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Calibri, Helvetica, sans-serif;
   font-weight: bold;
   text-align: center;
+}
+
+.phoneNumber{
+  width:300px;
+  height:50px;
+  border-radius: 5px;
+  font-size:40px;
+}
+
+.phoneNumber:focus{
+  box-shadow: 0px 0px 5px cyan ;
+}
+
+select{
+  width:80px;
+  font-size:28px;
+}
+
+.btn{
+  width:120px;
+  height:42px;
+  font-size: 15px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+#logo{
+  width:30%;
+  margin-top:-50px;
+}
+
+#foot{
+  position: absolute;
+  top:92%;
 }
