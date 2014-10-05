@@ -22,7 +22,7 @@ if (Meteor.isServer) {
 
     var alarmArray = [
     	{
-    		phone: "6462840850",
+    		phone: "",
     		time: new Date(2014, 9, 5, 12, 0),
     		appointed: false
     	}
@@ -33,7 +33,7 @@ if (Meteor.isServer) {
     }
 
     newAlarm = {
-    		phone: "4135471337",
+    		phone: "",
     		time: new Date(2014, 9, 5, 12, 0),
     		appointed: false
     	}
