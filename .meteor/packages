@@ -6,3 +6,6 @@
 meteor-platform
 insecure
 jquery
+mrt:moment
+mrt:twilio-meteor
+
