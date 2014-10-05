@@ -50,7 +50,22 @@ if (Meteor.isServer) {
 
 
 	Meteor.methods({
+    callPython: function() {
+        var fut = new Future();
+        exec('pythonScriptCommand with parameters', function (error, stdout, stderr) {
 
+          // if you want to write to Mongo in this callback
+          // you need to get yourself a Fiber
+          new Fiber(function() {
+            ...
+            fut.return('Python was here');
+          }).run();
+
+        });
+        return fut.wait();
+      }
+
+      
 		makeAppointment: function(alarm){ makeAppointment(alarm)}
 	})
     //doTwilio(["+16462840850","+19175823858"])
