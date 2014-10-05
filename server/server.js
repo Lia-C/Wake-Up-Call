@@ -14,7 +14,7 @@ if (Meteor.isServer) {
     Scripts.remove({});
 
     var testScript = {
-    	linesA: "I haven't got a brain... only straw.\nI don't know... But some people without brains do an awful lot of talking... don't they?"
+    	linesA: "I haven't got a brain... only straw.\nI don't know... But some people without brains do an awful lot of talking... don't they?",
       linesB: "How can you talk if you haven't got a brain?\nYes, I guess you're right."
     }
 
