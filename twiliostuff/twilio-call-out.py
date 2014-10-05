@@ -1,4 +1,5 @@
 from twilio.rest import TwilioRestClient 
+import sys
 import requests
 import json
 import time
@@ -9,7 +10,8 @@ AUTH_TOKEN = "b16805e25063ef10f93ae2c5f1835977"
  
 client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN) 
 
-phoneNumbers = ["+16462840850","+19175823858"]
+#phoneNumbers = ["+16462840850","+19175823858"]
+phoneNumbers = [sys.argv[1], sys.argv[2]]
 
 for phoneNumberToCall in phoneNumbers:
 	time.sleep(1)
