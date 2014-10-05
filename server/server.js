@@ -64,6 +64,7 @@ if (Meteor.isServer) {
 
 
 	Meteor.methods({
+<<<<<<< HEAD
 
 		makeAppointment: function(alarm){ makeAppointment(alarm)},
 		testCall: function(){doTwilio(["+19175823858","+16462840850"])},
@@ -72,6 +73,27 @@ if (Meteor.isServer) {
 		}
 	})
 
+=======
+    callPython: function() {
+        var fut = new Future();
+        exec('pythonScriptCommand with parameters', function (error, stdout, stderr) {
+
+          // if you want to write to Mongo in this callback
+          // you need to get yourself a Fiber
+          new Fiber(function() {
+            ...
+            fut.return('Python was here');
+          }).run();
+
+        });
+        return fut.wait();
+      }
+
+      
+		makeAppointment: function(alarm){ makeAppointment(alarm)}
+	})
+    //doTwilio(["+16462840850","+19175823858"])
+>>>>>>> abdaed841c92ff395f2ec0da6e012852120cee57
   });
 
   function makeAppointment(newAlarm){
@@ -93,7 +115,7 @@ if (Meteor.isServer) {
     	timeDiff = ( appointment['time'] - Date.now() )
     	console.log(timeDiff)
 
-    	Meteor.setTimeout(function(){makeRealCall(appointment)}, timeDiff)
+    	Meteor.setTimeout(function(){makeCall(appointment)}, timeDiff)
     	console.log("Appointment made!")
   	}
   	else{
@@ -107,13 +129,13 @@ if (Meteor.isServer) {
   //phoneNumbers is a tuple, with each element in the form: "+10123456789"
   function doTwilio(phoneNumbers){
     var ACCOUNT_SID = "ACd5ecb70137dd7aebf72e3b85a95f3fef"
-    var AUTH_TOKEN = "b16805e25063ef10f93ae2c5f1835977"
+    var AUTH_TOKEN = "b16805e25063ef10f93ae2c5f1835977"\
     twilio = Twilio(ACCOUNT_SID, AUTH_TOKEN);
     phoneNumbers.forEach(function(phoneNumber){
       twilio.makeCall({
         to:phoneNumber, // Any number Twilio can call
-        from: '+16468673942', // A number you bought from Twilio and can use for outbound communication
-        url: 'https://www.dropbox.com/s/1eoa97kbtqo9tut/twilio-response.xml?dl=1' // A URL that produces an XML document (TwiML) which contains instructions for the call
+        from: "+16468673942", // A number you bought from Twilio and can use for outbound communication
+        url: "https://www.dropbox.com/s/1eoa97kbtqo9tut/twilio-response.xml?dl=1" // A URL that produces an XML document (TwiML) which contains instructions for the call
       }, function(err, responseData) {
         //executed when the call has been initiated.
         console.log(responseData.from, responseData.body, err); 
@@ -121,8 +143,8 @@ if (Meteor.isServer) {
     })
     
   }
-  
-  function makeRealCall(appointment){
+
+  function makeCall(appointment){
 
   	console.log("Fake Call!", appointment)
 
@@ -142,7 +164,12 @@ if (Meteor.isServer) {
   	Alarms.remove({_id: {$in: appointment['alarm_ids'] }})
   	Appointments.remove({_id: appointment['_id']})
   }
+<<<<<<< HEAD
   function makeCatCall(alarm){
+=======
+
+  function makeCall(alarm){
+>>>>>>> abdaed841c92ff395f2ec0da6e012852120cee57
   	if (!alarm['appointed']){
   		console.log("Fake Cat Call!", alarm)
 
