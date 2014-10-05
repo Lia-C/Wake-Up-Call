@@ -20,9 +20,6 @@ if (Meteor.isServer) {
     	Alarms.insert(alarmArray[i]);
     }
 
-
-
-
     newAlarm = {
     		phone: "4135471337",
     		time: new Date(2014, 10, 5, 15),
@@ -33,13 +30,9 @@ if (Meteor.isServer) {
     makeAppointment(Alarms.find({_id: newAlarmId}).fetch()[0])
 
 
-    console.log("Alarms:", Alarms.find({}).fetch())
-    console.log("Appointments:",Appointments.find({}).fetch())
+    //console.log("Alarms:", Alarms.find({}).fetch())
+    //console.log("Appointments:",Appointments.find({}).fetch())
 
-
-    Meteor.publish("appointments", function(){
-    	return []
-    })
   	
   	Alarms.allow({
   		insert: function(userId, alarm){
@@ -50,7 +43,6 @@ if (Meteor.isServer) {
   				return true
   			}*/
   			alarm['appointed'] = false
-  			console.log(Alarms.find({}).fetch())
   			return true
   			//return false
   		}
@@ -65,7 +57,7 @@ if (Meteor.isServer) {
   });
 
   function makeAppointment(newAlarm){
-  	oldAlarm = Alarms.find({time: newAlarm['time'], appointed: false}).fetch()[0];
+  	oldAlarm = Alarms.find({_id: {$ne: newAlarm['_id']}, time: newAlarm['time'], appointed: false}).fetch()[0];
   	if (oldAlarm){
     	newAlarm['appointed'] = true;
 
@@ -79,14 +71,18 @@ if (Meteor.isServer) {
     	Alarms.update({_id: newAlarm['_id'] }, {$set: {appointed: true}})
 
     	Appointments.insert(appointment)
-
+    	console.log("Appointment made!")
   	}
   	else{
   		console.log("No other alarm to be paired with :'( ")
   	}
+  	console.log(Appointments.find({}).fetch())
   }
 
 
 
 }
 
+//// Need to do:
+// Call at correct time
+// Then remove from alarm + appointment

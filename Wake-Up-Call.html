@@ -25,10 +25,10 @@
 
 <div class="fadeAfterSubmit">
 <form name="input" method="get">
-What's your phone number? <input type="text" name="phoneNumber"><br>
+What's your phone number? <input type="text" class="phoneNumber"><br>
 When do you want to wake up? 
 
-<select>
+<select class="hour">
   <option value="01">01</option>
   <option value="02">02</option>
   <option value="03">03</option>
@@ -41,21 +41,29 @@ When do you want to wake up?
   <option value="10">10</option>
   <option value="11">11</option>
   <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
 </select>
 :
-<select>
+<select class="minute">
   <option value="00">00</option>
   <option value="15">15</option>
   <option value="30">30</option>
   <option value="45">45</option>
 </select>
 
-<select>
-  <option value="AM">AM</option>
-  <option value="PM">PM</option>
-</select>
+<br />
 
-<p><input type="submit" value="Submit"></p>
+<input type="button" id="submitAlarm" value="Submit">
 </form>
 </div>
 
