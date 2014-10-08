@@ -82,7 +82,6 @@ if (Meteor.isServer) {
 	Meteor.methods({
 
 		makeAppointment: function(alarm){ makeAppointment(alarm)},
-		testCall: function(){doTwilio(["+19175823858","+16462840850"])},
 		getScript: function(phone){
 			return Phones.find({phone: phone}).fetch()[0]['script']
 		},
@@ -151,7 +150,7 @@ if (Meteor.isServer) {
   function makeCall(appointment){
 
   	
-		Meteor.call('callPython',"+16462840850","+19175823858", function(a,b){console.log(a,b)})
+		Meteor.call('callPython',appointment['phones'][0],appointment['phones'][1])
 
 
   	phoneAndScriptArr = [{
@@ -174,7 +173,7 @@ if (Meteor.isServer) {
     alarm = Alarms.find({_id: alarm['_id']}).fetch()[0];
   	if (!alarm['appointed']){
   		console.log("Fake Cat Call!", alarm)
-
+      Meteor.call('catCallPython',alarm['phone'])
   		Alarms.remove({_id: alarm['_id']})
   	}
   	else{
